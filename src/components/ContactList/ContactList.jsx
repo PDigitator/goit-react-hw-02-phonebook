@@ -1,6 +1,8 @@
-import { ListElement } from 'components/ListElement/ListElement';
+import PropTypes from 'prop-types';
 
-const List = ({ data, deleteContact }) => {
+import ListElement from 'components/ListElement/ListElement';
+
+const ContactList = ({ data, deleteContact }) => {
   return (
     <ul>
       {data
@@ -16,4 +18,4 @@ const List = ({ data, deleteContact }) => {
   );
 };
 
-export default List;
+export default ContactList;

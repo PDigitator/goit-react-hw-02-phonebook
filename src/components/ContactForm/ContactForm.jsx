@@ -1,7 +1,9 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import Button from 'components/Button/Button';
 
-class AddContactForm extends Component {
+class ContactForm extends Component {
   state = {
     name: '',
     number: '',
@@ -58,4 +60,6 @@ class AddContactForm extends Component {
   }
 }
 
-export default AddContactForm;
+ContactForm.propTypes = {};
+
+export default ContactForm;

@@ -1,7 +1,6 @@
-export const ListElement = ({
-  element: { id, name, number },
-  deleteContact,
-}) => {
+import PropTypes from 'prop-types';
+
+const ListElement = ({ element: { id, name, number }, deleteContact }) => {
   return (
     <>
       <p>

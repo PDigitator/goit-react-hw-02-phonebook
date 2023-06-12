@@ -1,10 +1,10 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
+import { Report } from 'notiflix/build/notiflix-report-aio';
 
-import AddContactForm from 'components/AddContactForm/AddContactForm';
-
-// import SearchFilter from 'components/SearchFIlter/SearchFIlter';
-import List from 'components/List/List';
+import ContactForm from 'components/ContactForm/ContactForm';
+import SearchFilter from 'components/SearchFIlter/SearchFIlter';
+import ContactList from 'components/ContactList/ContactList';
 
 class App extends Component {
   state = {
@@ -15,18 +15,6 @@ class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
-  };
-
-  // showList = () => {
-  //   this.setState({ isListShown: true });
-  // };
-
-  deleteContact = id => {
-    this.setState(prevState => ({
-      contacts: prevState.contacts.filter(element => element.id !== id),
-    }));
   };
 
   addContact = data => {
@@ -35,30 +23,67 @@ class App extends Component {
       ...data,
     };
 
+    if (
+      this.state.contacts.some(
+        contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
+      )
+    ) {
+      Report.info('SORRY', `${newContact.name} is already in contacts.`, 'Ok');
+    } else {
+      this.setState(prevState => ({
+        contacts: [...prevState.contacts, newContact],
+      }));
+    }
+  };
+
+  changedFilter = evt => {
+    this.setState({ filter: evt.target.value.trim() });
+  };
+
+  searchContact = () => {
+    const { contacts, filter } = this.state;
+
+    const searchedContacts = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
+
+    return searchedContacts;
+  };
+
+  deleteContact = id => {
     this.setState(prevState => ({
-      contacts: [...prevState.contacts, newContact],
+      contacts: prevState.contacts.filter(element => element.id !== id),
     }));
   };
 
-  // openForm = () => {
-  //   this.setState({ isFormShown: true });
-  // };
-
-  // closeForm = () => {
-  //   this.setState({ isFormShown: false });
-  // };
-
   render() {
-    const { contacts, name, number } = this.state;
     return (
-      <>
-        <AddContactForm addContact={this.addContact} />
-
-        {/* <SearchFilter /> */}
-        <List data={contacts} deleteContact={this.deleteContact} />
-      </>
+      <div>
+        <h1>Phonebook</h1>
+        <ContactForm addContact={this.addContact} />
+        <h2>Contacts</h2>
+        <SearchFilter search={this.changedFilter} />
+        <ContactList
+          data={this.searchContact()}
+          deleteContact={this.deleteContact}
+        />
+      </div>
     );
   }
 }
 
 export default App;
+
+// Report.init({
+//   backgroundColor: 'rgba(79, 46, 232, 0.8)',
+//   titleFontSize: '24px',
+//   messageFontSize: '18px',
+//   info: {
+//     svgColor: '#fff',
+//     titleColor: '#fff',
+//     messageColor: '#fff',
+//     buttonBackground: '#2f0fbc',
+//     buttonColor: '#fff',
+//     backOverlayColor: 'rgba(79, 46, 232, 0.2)',
+//   },
+// });
