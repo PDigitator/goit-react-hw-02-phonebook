@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { Report } from 'notiflix/build/notiflix-report-aio';
 
+import { Container, MainTitle, Title } from 'components/App.styled';
 import ContactForm from 'components/ContactForm/ContactForm';
 import SearchFilter from 'components/SearchFIlter/SearchFIlter';
 import ContactList from 'components/ContactList/ContactList';
@@ -58,16 +59,16 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <Container>
+        <MainTitle>Phonebook</MainTitle>
         <ContactForm addContact={this.addContact} />
-        <h2>Contacts</h2>
+        <Title>Contacts</Title>
         <SearchFilter search={this.changedFilter} />
         <ContactList
           data={this.searchContact()}
           deleteContact={this.deleteContact}
         />
-      </div>
+      </Container>
     );
   }
 }
@@ -75,15 +76,15 @@ class App extends Component {
 export default App;
 
 // Report.init({
-//   backgroundColor: 'rgba(79, 46, 232, 0.8)',
+//   backgroundColor: '#e5eaf1',
 //   titleFontSize: '24px',
 //   messageFontSize: '18px',
 //   info: {
-//     svgColor: '#fff',
-//     titleColor: '#fff',
-//     messageColor: '#fff',
-//     buttonBackground: '#2f0fbc',
-//     buttonColor: '#fff',
-//     backOverlayColor: 'rgba(79, 46, 232, 0.2)',
+//     svgColor: '#112236',
+//     titleColor: '#112236',
+//     messageColor: '#112236',
+//     buttonBackground: '#768696',
+//     buttonColor: '#112236',
+//     backOverlayColor: 'rgb(118, 134, 150, 0.8)',
 //   },
 // });

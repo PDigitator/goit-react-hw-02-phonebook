@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
 
+import { Btn } from 'components/Button/Button.styled';
+
 const Button = ({ text }) => {
-  return <button type="submit">{text}</button>;
+  return <Btn type="submit">{text}</Btn>;
 };
 
 Button.propTypes = {

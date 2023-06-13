@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import Button from 'components/Button/Button';
 
+import { Form, Label, Input } from 'components/ContactForm/ContactForm.styled';
+
 class ContactForm extends Component {
   state = {
     name: '',
@@ -28,10 +30,10 @@ class ContactForm extends Component {
     const { name, number } = this.state;
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
+      <Form onSubmit={this.handleSubmit}>
+        <Label>
           Name
-          <input
+          <Input
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -40,11 +42,11 @@ class ContactForm extends Component {
             value={name}
             onChange={this.handleChange}
           />
-        </label>
+        </Label>
 
-        <label>
+        <Label>
           Number
-          <input
+          <Input
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[\-.\s]?\(?\d{1,3}?\)?[\-.\s]?\d{1,4}[\-.\s]?\d{1,4}[\-.\s]?\d{1,9}"
@@ -53,13 +55,13 @@ class ContactForm extends Component {
             value={number}
             onChange={this.handleChange}
           />
-        </label>
+        </Label>
         <Button text="Add contact" />
-      </form>
+      </Form>
     );
   }
 }
 
-ContactForm.propTypes = {};
+ContactForm.propTypes = { addContact: PropTypes.func.isRequired };
 
 export default ContactForm;
