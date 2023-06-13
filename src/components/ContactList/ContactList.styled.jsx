@@ -4,8 +4,6 @@ const List = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 10px;
-
-  list-style-type: circle;
 `;
 
 const ListItem = styled.li`
