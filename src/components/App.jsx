@@ -44,8 +44,10 @@ class App extends Component {
   searchContact = () => {
     const { contacts, filter } = this.state;
 
+    const normalisedFilter = filter.toLowerCase();
+
     const searchedContacts = contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
+      contact.name.toLowerCase().includes(normalisedFilter)
     );
 
     return searchedContacts;
