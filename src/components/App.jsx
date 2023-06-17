@@ -76,17 +76,3 @@ class App extends Component {
 }
 
 export default App;
-
-// Report.init({
-//   backgroundColor: '#e5eaf1',
-//   titleFontSize: '24px',
-//   messageFontSize: '18px',
-//   info: {
-//     svgColor: '#112236',
-//     titleColor: '#112236',
-//     messageColor: '#112236',
-//     buttonBackground: '#768696',
-//     buttonColor: '#112236',
-//     backOverlayColor: 'rgb(118, 134, 150, 0.8)',
-//   },
-// });
